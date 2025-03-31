@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.gilberto009199.anotai.desafio_backend.api.request.ProductRequest;
+
 
 @Document(collection = "product")
 public class ProductEntity {
@@ -18,6 +20,17 @@ public class ProductEntity {
     private String categoryId;
     private String ownerId;
 
+    public ProductEntity() {}
+    public ProductEntity(ProductRequest data) {
+        this
+        .setTitle(data.getTitle())
+        .setDescription(data.getDescription())
+        .setPrice(data.getPrice())
+        .setOwnerId(data.getOwnerId());
+
+        if(data.getCategory() != null)setCategoryId(data.getCategory().getId());
+        
+    }
     public String getId() { return id;  }
     public ProductEntity setId(String id) {
         this.id = id;

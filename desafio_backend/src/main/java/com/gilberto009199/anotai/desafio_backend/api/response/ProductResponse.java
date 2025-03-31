@@ -2,6 +2,9 @@ package com.gilberto009199.anotai.desafio_backend.api.response;
 
 import java.math.BigDecimal;
 
+import com.gilberto009199.anotai.desafio_backend.entities.CategoryEntity;
+import com.gilberto009199.anotai.desafio_backend.entities.ProductEntity;
+
 public class ProductResponse {
 
     private String id;
@@ -10,6 +13,35 @@ public class ProductResponse {
     private BigDecimal price;
     private CategoryResponse category;
     private String ownerId;
+
+    public ProductResponse() {}
+
+    public ProductResponse(ProductEntity entity) {
+        this
+        .setId(entity.getId())
+        .setTitle(entity.getTitle())
+        .setDescription(entity.getDescription())
+        .setOwnerId(entity.getOwnerId())
+        .setPrice(entity.getPrice());
+
+        if(entity.getCategoryId() != null) setCategory(
+            new CategoryResponse()
+            .setId( entity.getCategoryId() )
+        );
+
+    }
+
+    public ProductResponse(ProductEntity entity, CategoryEntity categoryEntity) {
+        this
+        .setId(entity.getId())
+        .setTitle(entity.getTitle())
+        .setDescription(entity.getDescription())
+        .setOwnerId(entity.getOwnerId())
+        .setPrice(entity.getPrice())
+        .setCategory(
+            new CategoryResponse(categoryEntity)
+        );
+    }
 
     public String getId() { return id;  }
     public ProductResponse setId(String id) {

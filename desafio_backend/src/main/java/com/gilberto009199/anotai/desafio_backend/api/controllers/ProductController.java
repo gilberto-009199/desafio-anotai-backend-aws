@@ -51,7 +51,7 @@ public class ProductController {
 
         var entity = service.save(id, data);
 
-        return ResponseEntity.ok(new ProductResponse());
+        return ResponseEntity.ok(entity);
     }
 
     @DeleteMapping("/{id}")

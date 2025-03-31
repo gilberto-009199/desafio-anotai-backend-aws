@@ -3,6 +3,9 @@ package com.gilberto009199.anotai.desafio_backend.entities;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.gilberto009199.anotai.desafio_backend.api.request.CategoryRequest;
+import com.gilberto009199.anotai.desafio_backend.api.request.ProductRequest;
+
 
 @Document(collection = "category")
 public class CategoryEntity {
@@ -12,6 +15,15 @@ public class CategoryEntity {
     private String title;
     private String description;
     private String ownerId;
+
+
+    public CategoryEntity() {}
+    public CategoryEntity(CategoryRequest data) {
+        this
+        .setTitle(data.getTitle())
+        .setDescription(data.getDescription())
+        .setOwnerId(data.getOwnerId());
+    }
 
     public String getId() { return id;  }
     public CategoryEntity setId(String id) {

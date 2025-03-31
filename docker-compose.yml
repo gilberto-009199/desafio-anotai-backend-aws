@@ -10,3 +10,4 @@ services:
       MONGO_INITDB_DATABASE: desafio_backend
     volumes:
       - ./data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js

@@ -1,11 +1,24 @@
 package com.gilberto009199.anotai.desafio_backend.api.response;
 
+import com.gilberto009199.anotai.desafio_backend.entities.CategoryEntity;
+
 public class CategoryResponse {
 
     private String id;
     private String title;
     private String description;
     private String ownerId;
+
+    public CategoryResponse() {}
+
+    public CategoryResponse(CategoryEntity entity) {
+        this
+        .setId(entity.getId())
+        .setTitle(entity.getTitle())
+        .setDescription(entity.getDescription())
+        .setOwnerId(entity.getOwnerId());
+    }
+    
 
     public String getId() { return id;  }
     public CategoryResponse setId(String id) {

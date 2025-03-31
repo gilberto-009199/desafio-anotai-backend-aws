@@ -13,18 +13,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gilberto009199.anotai.desafio_backend.api.request.ProductRequest;
 import com.gilberto009199.anotai.desafio_backend.api.response.ProductResponse;
+import com.gilberto009199.anotai.desafio_backend.services.ProductService;
 
 @RestController
 @RequestMapping("/product")
 public class ProductController {
 
+    private final ProductService service;
+
+    public ProductController(ProductService service){
+        this.service = service;
+    }
+
     @GetMapping
-    public ResponseEntity<?> list(){
+    public ResponseEntity<?> getAll(){
         return ResponseEntity.ok(new ProductResponse[]{});
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getCategory(@PathVariable("id") String id){
+    public ResponseEntity<?> getById(@PathVariable("id") String id){
         return ResponseEntity.ok(null);
     }
 

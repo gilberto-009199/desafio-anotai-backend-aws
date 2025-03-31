@@ -1,4 +1,79 @@
 
+
+
+#### Use:
+
+```shell
+
+# Use /category
+
+$ curl -X GET  http://localhost:8080/category
+$ curl -X POST http://localhost:8080/category \
+     -H "Content-Type: application/json" \
+     -d '{
+        "title": "Category Title",
+        "description": "Category Description",
+        "ownerId": "7464587"
+    }'
+$ curl -X PUT http://localhost:8080/category/67ea362a2389093dfc9d22bc \
+     -H "Content-Type: application/json" \
+     -d '{
+        "title": "Category Title UpDate",
+        "description": "Category Description UpDate",
+        "ownerId": "7464587"
+    }'
+$ curl -X DELETE http://localhost:8080/category/67ea362a2389093dfc9d22bc
+
+# Use /product
+
+$ curl -X GET  http://localhost:8080/product
+$ curl -X POST http://localhost:8080/product \
+     -H "Content-Type: application/json" \
+     -d '{
+        "title": "titulo teste",
+        "description": "descriptaçaot teste",
+        "price": 1,
+        "ownerId": "7464587"
+    }'
+$ curl -X PUT http://localhost:8080/product/67ea344a2389093dfc9d22b1 \
+     -H "Content-Type: application/json" \
+     -d '{
+        "title": "titulo teste",
+        "description": "descriptaçaot teste",
+        "price": 1,
+        "category":{
+            "id": "67ea362a2389093dfc9d22bc"
+        }
+        "ownerId": "7464587"
+    }'
+$ curl -X DELETE http://localhost:8080/product/67ea344a2389093dfc9d22b1
+```
+
+#### Code/Architecture:
+
++ Controllers:
+
+  - [x] [/category]()
+    - [x] [GET    /category]()
+    - [x] [GET    /category/{id}]()
+    - [x] [POST   /category]()
+    - [x] [PUT    /category/{id}]()
+    - [x] [DELETE /category/{id}]()
+  
+  - [x] [/product]()
+    - [x] [GET    /product]()
+    - [x] [GET    /product/{id}]()
+    - [x] [POST   /product]()
+    - [x] [PUT    /product/{id}]()
+    - [x] [DELETE /product/{id}]()
+
++ Services:
+    
+
++ Repositories(InMongoDB):
+  
+
+
 <h1>Backend Analyst Candidate Test</h1>
 Dear developer,
 

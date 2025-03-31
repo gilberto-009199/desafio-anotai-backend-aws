@@ -25,7 +25,6 @@ public class CategoryController {
         this.service = service;
     }
 
-
     @GetMapping
     public ResponseEntity<?> get(){
         return ResponseEntity.ok(service.getAll());
@@ -57,6 +56,6 @@ public class CategoryController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable String id){
-        
+        service.delete(id);   
     }
 }

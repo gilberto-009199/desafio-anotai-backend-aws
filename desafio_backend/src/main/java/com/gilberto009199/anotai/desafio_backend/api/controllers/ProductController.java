@@ -27,29 +27,35 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity<?> getAll(){
-        return ResponseEntity.ok(new ProductResponse[]{});
+        return ResponseEntity.ok(service.getAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable("id") String id){
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(service.getById(id));
     }
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody ProductRequest data){
+
+        var entity = service.create(data);
+
         return ResponseEntity
         .status(HttpStatus.CREATED)
-        .body(new ProductResponse());
+        .body(entity);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> save( @PathVariable String id,
                                    @RequestBody ProductRequest data){
+
+        var entity = service.save(id, data);
+
         return ResponseEntity.ok(new ProductResponse());
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable String id){
-        
+        service.delete(id);
     }
 }

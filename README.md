@@ -53,25 +53,27 @@ $ curl -X DELETE http://localhost:8080/product/67ea344a2389093dfc9d22b1
 
 + Controllers:
 
-  - [x] [/category]()
-    - [x] [GET    /category]()
-    - [x] [GET    /category/{id}]()
-    - [x] [POST   /category]()
-    - [x] [PUT    /category/{id}]()
-    - [x] [DELETE /category/{id}]()
+  - [x] [/category](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java)
+    - [x] [GET    /category](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java#L29)
+    - [x] [GET    /category/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java#L34)
+    - [x] [POST   /category](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java#L39)
+    - [x] [PUT    /category/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java#L49)
+    - [x] [DELETE /category/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java#L58)
   
-  - [x] [/product]()
-    - [x] [GET    /product]()
-    - [x] [GET    /product/{id}]()
-    - [x] [POST   /product]()
-    - [x] [PUT    /product/{id}]()
-    - [x] [DELETE /product/{id}]()
+  - [x] [/product](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java)
+    - [x] [GET    /product](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java#L29)
+    - [x] [GET    /product/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java#L34)
+    - [x] [POST   /product](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java#L39)
+    - [x] [PUT    /product/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java#L48)
+    - [x] [DELETE /product/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java#L58)
 
 + Services:
-    
+    - [x] [CategoryService](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/services/CategoryService.java)
+    - [x] [ProductService](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/services/ProductService.java)
 
-+ Repositories(InMongoDB):
-  
++ Repositories(MongoDB):
+  - [x] [CategoryRepository](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/repositories/CategoryRepository.java)
+  - [x] [ProductRepository](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/repositories/ProductRepository.java)
 
 
 <h1>Backend Analyst Candidate Test</h1>

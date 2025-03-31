@@ -1,2 +1,8 @@
 desafio_backend/target/
+
+# mongodb storage
+data
+data/
+data/*
+
 .vscode/

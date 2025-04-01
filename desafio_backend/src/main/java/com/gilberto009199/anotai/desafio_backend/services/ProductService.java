@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.gilberto009199.anotai.desafio_backend.api.request.ProductRequest;
 import com.gilberto009199.anotai.desafio_backend.api.response.ProductResponse;
+import com.gilberto009199.anotai.desafio_backend.aws.services.SQSService;
 import com.gilberto009199.anotai.desafio_backend.entities.CategoryEntity;
 import com.gilberto009199.anotai.desafio_backend.entities.ProductEntity;
 import com.gilberto009199.anotai.desafio_backend.repositories.CategoryRepository;
@@ -17,11 +18,14 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+    private final SQSService sqsService;
 
     public ProductService(ProductRepository productRepository,
-                          CategoryRepository categoryRepository){
-        this.productRepository = productRepository;
+                          CategoryRepository categoryRepository,
+                          SQSService sqsService){
+        this.productRepository  = productRepository;
         this.categoryRepository = categoryRepository;
+        this.sqsService         = sqsService;
     }
 
     public ProductResponse getById(String id) {
@@ -91,7 +95,9 @@ public class ProductService {
         
         entity = productRepository.insert(entity);
 
-        
+        // send menssage
+        sqsService.sendMessageAsync("Novo produto criado!!!");
+
         if(category.isPresent())
             return new ProductResponse(entity, category.get());
         else

@@ -1,3 +1,5 @@
+.env
+
 desafio_backend/target/
 
 # mongodb storage

@@ -1,3 +1,103 @@
+
+### Install/Build :
+
+```shell
+# AWS credencial set Region, AWS_KEY_ID, AWS_SECRET
+$ sed -i "s|spring.cloud.aws.region.static=.*|spring.cloud.aws.region.static=us-east-1|" desafio_backend/src/main/resources/application.properties
+$ sed -i "s|spring.cloud.aws.credentials.access-key=.*|spring.cloud.aws.credentials.access-key=${AWS_KEY_ID}|" desafio_backend/src/main/resources/application.properties
+$ sed -i "s|spring.cloud.aws.credentials.secret-key=.*|spring.cloud.aws.credentials.secret-key=${AWS_SECRET}|" desafio_backend/src/main/resources/application.properties
+
+# Build .jar
+$ chmod +x desafio_backend/mvnw clean package
+$ cd desafio_backend
+$ ./mvnw clean package
+$ cd ..
+
+# terraform create infra in aws
+
+$ terraform plan
+$ terraform apply
+
+```
+#### Use API :
+
+```shell
+
+# Catalog of s3 json's
+$ curl -X GET  http://localhost:8080/
+
+# Use /category
+
+$ curl -X GET  http://localhost:8080/category
+$ curl -X POST http://localhost:8080/category \
+     -H "Content-Type: application/json" \
+     -d '{
+        "title": "Category Title",
+        "description": "Category Description",
+        "ownerId": "7464587"
+    }'
+$ curl -X PUT http://localhost:8080/category/67ea362a2389093dfc9d22bc \
+     -H "Content-Type: application/json" \
+     -d '{
+        "title": "Category Title UpDate",
+        "description": "Category Description UpDate",
+        "ownerId": "7464587"
+    }'
+$ curl -X DELETE http://localhost:8080/category/67ea362a2389093dfc9d22bc
+
+# Use /product
+
+$ curl -X GET  http://localhost:8080/product
+$ curl -X POST http://localhost:8080/product \
+     -H "Content-Type: application/json" \
+     -d '{
+        "title": "titulo teste",
+        "description": "descriptaçaot teste",
+        "price": 1,
+        "ownerId": "7464587"
+    }'
+$ curl -X PUT http://localhost:8080/product/67ea344a2389093dfc9d22b1 \
+     -H "Content-Type: application/json" \
+     -d '{
+        "title": "titulo teste",
+        "description": "descriptaçaot teste",
+        "price": 1,
+        "category":{
+            "id": "67ea362a2389093dfc9d22bc"
+        }
+        "ownerId": "7464587"
+    }'
+$ curl -X DELETE http://localhost:8080/product/67ea344a2389093dfc9d22b1
+```
+
+#### Code/Architecture:
+
++ Controllers:
+
+  - [x] [/category](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java)
+    - [x] [GET    /category](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java#L29)
+    - [x] [GET    /category/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java#L34)
+    - [x] [POST   /category](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java#L39)
+    - [x] [PUT    /category/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java#L49)
+    - [x] [DELETE /category/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java#L58)
+  
+  - [x] [/product](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java)
+    - [x] [GET    /product](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java#L29)
+    - [x] [GET    /product/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java#L34)
+    - [x] [POST   /product](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java#L39)
+    - [x] [PUT    /product/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java#L48)
+    - [x] [DELETE /product/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java#L58)
+
++ Services:
+    - [x] [CategoryService](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/services/CategoryService.java)
+    - [x] [ProductService](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/services/ProductService.java)
+
++ Repositories(MongoDB):
+  - [x] [CategoryRepository](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/repositories/CategoryRepository.java)
+  - [x] [ProductRepository](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/repositories/ProductRepository.java)
+
+
+
 # Teste para Candidato a Analista Backend
 
 Caro desenvolvedor,

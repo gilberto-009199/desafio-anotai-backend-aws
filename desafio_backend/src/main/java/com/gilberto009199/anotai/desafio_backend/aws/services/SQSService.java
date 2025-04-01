@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.gilberto009199.anotai.desafio_backend.aws.consumer.MessageQueueEnum;
+
 import io.awspring.cloud.sqs.listener.MessageListener;
 import io.awspring.cloud.sqs.listener.SqsMessageListenerContainer;
 
@@ -24,6 +26,8 @@ public class SQSService {
     private final SqsClient sqsClient;
     private final SqsAsyncClient sqsAsyncClient;
 
+    public final static String IDENTIFICATION_PROCESS_TYPE = "processType";
+
     public SQSService(SqsClient sqsClient,
                       String sqsQueueUrl,
                       SqsAsyncClient sqsAsyncClient){
@@ -32,7 +36,10 @@ public class SQSService {
         this.sqsAsyncClient = sqsAsyncClient;
     }
 
-    public SendMessageResponse sendMessage(String messageBody) { return sendMessage(null, messageBody);   }
+    public SendMessageResponse sendMessage(String messageBody) { return sendMessage( Map.of(), messageBody);   }
+    public SendMessageResponse sendMessage( MessageQueueEnum process, String messageBody) { 
+        return sendMessage(Map.of( IDENTIFICATION_PROCESS_TYPE, process.name() ), messageBody);  
+    }
     public SendMessageResponse sendMessage( Map<String, String> headers, String messageBody) {
         SendMessageRequest request = SendMessageRequest.builder()
                 .queueUrl(sqsQueueUrl) 
@@ -43,8 +50,10 @@ public class SQSService {
         return sqsClient.sendMessage(request);
     }
 
-
-    public CompletableFuture<SendMessageResponse> sendMessageAsync(String messageBody) { return sendMessageAsync(null, messageBody);  }
+    public CompletableFuture<SendMessageResponse> sendMessageAsync(String messageBody) { return sendMessageAsync(Map.of(), messageBody);  }
+    public CompletableFuture<SendMessageResponse> sendMessageAsync(MessageQueueEnum process, String messageBody) { 
+        return sendMessageAsync(Map.of( IDENTIFICATION_PROCESS_TYPE, process.name() ), messageBody);  
+    }
     public CompletableFuture<SendMessageResponse> sendMessageAsync( Map<String, String> headers, String messageBody) {
         SendMessageRequest request = SendMessageRequest.builder()
                 .queueUrl(sqsQueueUrl)

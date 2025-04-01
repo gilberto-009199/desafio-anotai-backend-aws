@@ -5,8 +5,10 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gilberto009199.anotai.desafio_backend.api.request.ProductRequest;
 import com.gilberto009199.anotai.desafio_backend.api.response.ProductResponse;
+import com.gilberto009199.anotai.desafio_backend.aws.consumer.MessageQueueEnum;
 import com.gilberto009199.anotai.desafio_backend.aws.services.SQSService;
 import com.gilberto009199.anotai.desafio_backend.entities.CategoryEntity;
 import com.gilberto009199.anotai.desafio_backend.entities.ProductEntity;
@@ -18,13 +20,17 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+    private final ObjectMapper objectMapper;
     private final SQSService sqsService;
+    
 
     public ProductService(ProductRepository productRepository,
                           CategoryRepository categoryRepository,
+                          ObjectMapper objectMapper,
                           SQSService sqsService){
         this.productRepository  = productRepository;
         this.categoryRepository = categoryRepository;
+        this.objectMapper       = objectMapper;
         this.sqsService         = sqsService;
     }
 
@@ -73,7 +79,10 @@ public class ProductService {
         else
             entity.setCategoryId(category.get().getId());
         
-        productRepository.save(entity);
+        entity = productRepository.save(entity);
+
+        // send menssage SQS
+        addInQueue(MessageQueueEnum.UPDATE_PRODUCT, entity);
 
         if(category.isPresent())
             return new ProductResponse(entity, category.get());
@@ -95,8 +104,8 @@ public class ProductService {
         
         entity = productRepository.insert(entity);
 
-        // send menssage
-        sqsService.sendMessageAsync("Novo produto criado!!!");
+        // send menssage SQS
+        addInQueue(MessageQueueEnum.NEW_PRODUCT, entity);
 
         if(category.isPresent())
             return new ProductResponse(entity, category.get());
@@ -106,7 +115,24 @@ public class ProductService {
     }
 
     public void delete(String id) {
+        
+        var entity = productRepository.findById(id).get();
+
         productRepository.deleteById(id);
+
+        addInQueue(MessageQueueEnum.REMOVE_PRODUCT, entity);
+    }
+
+    private void addInQueue(MessageQueueEnum processType, ProductEntity entity){
+
+        try{
+            
+            var payload = objectMapper.writeValueAsString(entity);
+
+            sqsService.sendMessageAsync(processType, payload);
+
+        }catch(Exception e){}
+
     }
 
 }

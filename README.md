@@ -1,9 +1,31 @@
 
 
-
-#### Use:
+### Install/Build :
 
 ```shell
+# AWS credencial set Region, AWS_KEY_ID, AWS_SECRET
+$ sed -i "s|spring.cloud.aws.region.static=.*|spring.cloud.aws.region.static=us-east-1|" desafio_backend/src/main/resources/application.properties
+$ sed -i "s|spring.cloud.aws.credentials.access-key=.*|spring.cloud.aws.credentials.access-key=${AWS_KEY_ID}|" desafio_backend/src/main/resources/application.properties
+$ sed -i "s|spring.cloud.aws.credentials.secret-key=.*|spring.cloud.aws.credentials.secret-key=${AWS_SECRET}|" desafio_backend/src/main/resources/application.properties
+
+# Build .jar
+$ chmod +x desafio_backend/mvnw clean package
+$ cd desafio_backend
+$ ./mvnw clean package
+$ cd ..
+
+# terraform create infra in aws
+
+$ terraform plan
+$ terraform apply
+
+```
+#### Use API :
+
+```shell
+
+# Catalog of s3 json's
+$ curl -X GET  http://localhost:8080/
 
 # Use /category
 
@@ -112,7 +134,8 @@ Your task is to develop an API using Node.js for a product catalog management sy
 
 <hr>
 <strong>Diagram representing the final structure of the project:</strong> <br><br>
-![image](https://github.com/githubanotaai/new-test-backend-nodejs/assets/52219768/504ba448-f128-41db-ae86-18dc19c0dc9d)
+
+<img alt="diagram with struture S3 SQS for catalog" width="680" src="https://github.com/githubanotaai/new-test-backend-nodejs/assets/52219768/504ba448-f128-41db-ae86-18dc19c0dc9d">
 
 
 <hr>

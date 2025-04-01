@@ -37,7 +37,9 @@ Você deve desenvolver este teste utilizando as seguintes tecnologias:
 ## Estrutura do Projeto
 
 **Diagrama representando a estrutura final do projeto:**  
-![image](https://github.com/githubanotaai/new-test-backend-nodejs/assets/52219768/504ba448-f128-41db-ae86-18dc19c0dc9d)
+
+<img alt="diagram with struture S3 SQS for catalog" width="680" src="https://github.com/githubanotaai/new-test-backend-nodejs/assets/52219768/504ba448-f128-41db-ae86-18dc19c0dc9d">
+
 
 ---
 

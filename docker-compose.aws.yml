@@ -14,12 +14,12 @@ services:
   app:
     image: openjdk:21-jdk
     container_name: java_app
-    command: java -jar /app/app.jar
+    command: java -jar /app/app.jar --server.port=80
     volumes:
       - ./app.jar:/app/app.jar
     environment:
       - MONGO_URI=mongodb://meu_usuario:minha_senha@mongodb:27017/desafio_backend
     ports:
-      - "8080:8080"
+      - "80:80"
     depends_on:
       - mongodb

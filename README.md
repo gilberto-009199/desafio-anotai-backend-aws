@@ -75,6 +75,9 @@ $ curl -X DELETE http://localhost:8080/product/67ea344a2389093dfc9d22b1
 
 + Controllers:
 
+  - [x] [/](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CatalogController.java)
+    - [x] [GET    /](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CatalogController.java#L21)
+
   - [x] [/category](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java)
     - [x] [GET    /category](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java#L29)
     - [x] [GET    /category/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/CategoryController.java#L34)
@@ -89,9 +92,15 @@ $ curl -X DELETE http://localhost:8080/product/67ea344a2389093dfc9d22b1
     - [x] [PUT    /product/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java#L48)
     - [x] [DELETE /product/{id}](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/api/controllers/ProductController.java#L58)
 
++ Consumer(SQS):
+    
+    - [x] [CatalogConsumer](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/aws/consumer/CatalogConsumer.java)
+    
 + Services:
     - [x] [CategoryService](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/services/CategoryService.java)
     - [x] [ProductService](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/services/ProductService.java)
+    - [x] [S3Service](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/aws/services/S3Service.java)
+    - [x] [SQSService](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/aws/services/SQSService.java)
 
 + Repositories(MongoDB):
   - [x] [CategoryRepository](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/repositories/CategoryRepository.java)

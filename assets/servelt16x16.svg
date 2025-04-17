@@ -1,0 +1,21 @@
+<svg width="16" height="16" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="100" fill="#007BFF"/>
+  <text x="100"
+	y="108"
+	font-family="Arial, sans-serif"
+	font-size="130"
+	fill="white"
+	text-anchor="middle"
+	dominant-baseline="middle">
+   S
+  </text>
+  <text x="160"
+	y="50"
+	font-size="120"
+	font-family="Arial, sans-serif"
+	fill="yellow"
+	text-anchor="middle"
+	dominant-baseline="middle">
+	+
+  </text>
+</svg>

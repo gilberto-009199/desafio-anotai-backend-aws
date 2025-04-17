@@ -1,8 +1,22 @@
+
 # desafio backend AnotaAi
 
- A proposta é construir uma API utilizando **MongoDB**, **AWS S3** e **AWS SQS** para gerenciar um catálogo de produtos de um marketplace.
+<img align="right" src="./assets/spring16x16.svg" alt="Spring Boot" />
+<img align="right" src="./assets/docker16x16.svg" alt="Docker" />
+<img align="right" src="./assets/swagger.svg" alt="Swagger" />
+<img align="right" src="./assets/mongodb.svg" alt="MongoDB" />
+<img align="right" src="./assets/cloud16x16.svg" alt="AWS" />
+<img align="right" src="./assets/Arch_Amazon-Simple-Storage-Service_16.svg" alt="S3 Bucket" />
+<img align="right" src="./assets/Arch_Amazon-Simple-Queue-Service_16.svg" alt="SQS" />
+<img align="right" src="./assets/terraform16x16.svg" alt="Terraform" />
+ 
+  
+A proposta é construir uma API utilizando **MongoDB**, **AWS S3** e **AWS SQS** para gerenciar um catálogo de produtos de um marketplace.
 
 O sistema deve permitir o cadastro de produtos e categorias, cada um vinculado a um proprietário. Os usuários poderão criar, atualizar e excluir esses itens, além de associar produtos a categorias (lembrando que um produto só pode pertencer a uma categoria por vez). Todas as informações devem estar organizadas por proprietário, e a busca pelo catálogo não deve depender diretamente do banco de dados.
+
+
+
 
 
 #### Install/Build :

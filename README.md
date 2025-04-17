@@ -1,6 +1,11 @@
+# desafio backend AnotaAi
+
+ A proposta é construir uma API utilizando **MongoDB**, **AWS S3** e **AWS SQS** para gerenciar um catálogo de produtos de um marketplace.
+
+O sistema deve permitir o cadastro de produtos e categorias, cada um vinculado a um proprietário. Os usuários poderão criar, atualizar e excluir esses itens, além de associar produtos a categorias (lembrando que um produto só pode pertencer a uma categoria por vez). Todas as informações devem estar organizadas por proprietário, e a busca pelo catálogo não deve depender diretamente do banco de dados.
 
 
-### Install/Build :
+#### Install/Build :
 
 ```shell
 # AWS credencial set Region, AWS_KEY_ID, AWS_SECRET
@@ -105,6 +110,13 @@ $ curl -X DELETE http://localhost:8080/product/67ea344a2389093dfc9d22b1
 + Repositories(MongoDB):
   - [x] [CategoryRepository](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/repositories/CategoryRepository.java)
   - [x] [ProductRepository](./desafio_backend/src/main/java/com/gilberto009199/anotai/desafio_backend/repositories/ProductRepository.java)
+
+#### Swagger:
+
+
+* [Documentacao swagger JSON](./swagger.json) - Arquivo de Documentacao em JSON
+
+![Swagger UI](./swagger_ui.png)
 
 
 <h1>Backend Analyst Candidate Test</h1>

@@ -1,12 +1,21 @@
 package com.gilberto009199.anotai.desafio_backend.api.response;
 
 import com.gilberto009199.anotai.desafio_backend.entities.CategoryEntity;
+import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(description = "Category Data")
 public class CategoryResponse {
 
+    @Schema(description = "Category id", requiredMode = Schema.RequiredMode.REQUIRED)
     private String id;
+
+    @Schema(description = "Category title", requiredMode = Schema.RequiredMode.REQUIRED)
     private String title;
+
+    @Schema(description = "Category description", requiredMode = Schema.RequiredMode.REQUIRED)
     private String description;
+
+    @Schema(description = "Category owner id", requiredMode = Schema.RequiredMode.REQUIRED)
     private String ownerId;
 
     public CategoryResponse() {}

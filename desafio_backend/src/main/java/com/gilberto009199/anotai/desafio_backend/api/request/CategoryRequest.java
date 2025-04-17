@@ -1,17 +1,22 @@
 package com.gilberto009199.anotai.desafio_backend.api.request;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+
+@Schema(description = "Category Data")
 public class CategoryRequest {
 
-    private String id;
+    @Schema(description = "Category title")
+    @NotBlank
     private String title;
-    private String description;
-    private String ownerId;
 
-    public String getId() { return id;  }
-    public CategoryRequest setId(String id) {
-        this.id = id;
-        return this;
-    }
+    @Schema(description = "Category description")
+    @NotBlank
+    private String description;
+
+    @Schema(description = "Category owner id")
+    @NotBlank
+    private String ownerId;
 
     public String getTitle() { return title; }
     public CategoryRequest setTitle(String title) {

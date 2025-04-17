@@ -1,21 +1,33 @@
 package com.gilberto009199.anotai.desafio_backend.api.request;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.math.BigDecimal;
 
+@Schema(description = "Product data")
 public class ProductRequest {
 
-    private String id;
+    @Schema(description = "Product title")
+    @NotBlank
     private String title;
-    private String description;
-    private BigDecimal price;
-    private CategoryRequest category;
-    private String ownerId;
 
-    public String getId() { return id;  }
-    public ProductRequest setId(String id) {
-        this.id = id;
-        return this;
-    }
+    @Schema(description = "Product description")
+    @NotBlank
+    private String description;
+
+    @Schema(description = "Product price, min = 1")
+    @Size(min = 1)
+    private BigDecimal price;
+
+    @Schema(description = "Product category", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    private CategoryRequest category;
+
+    @Schema(description = "Product owner id")
+    @NotBlank
+    private String ownerId;
 
     public String getTitle() { return title; }
     public ProductRequest setTitle(String title) {

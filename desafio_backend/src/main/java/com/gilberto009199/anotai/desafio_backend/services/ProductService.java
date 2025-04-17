@@ -39,7 +39,9 @@ public class ProductService {
         // @todo return Throw ProductNotFound
         var entity = productRepository.findById(id).get();
 
-        var category = categoryRepository.findById(entity.getCategoryId());
+        Optional<CategoryEntity> category =  Optional.empty();
+
+        if(entity.getCategoryId() != null)category = categoryRepository.findById(entity.getCategoryId());
 
         if(category.isEmpty())return new ProductResponse(entity);
 
@@ -71,7 +73,7 @@ public class ProductService {
         Optional<CategoryEntity> category = Optional.empty();
 
         // @todo exception category for Id no exist
-        if(data.getCategory() != null) category = categoryRepository.findById(data.getCategory().getId());
+        if(data.getCategory() != null) category = categoryRepository.findById(id);
         
         
         if(!category.isPresent())

@@ -28,8 +28,6 @@ public class ProductEntity {
         .setPrice(data.getPrice())
         .setOwnerId(data.getOwnerId());
 
-        if(data.getCategory() != null)setCategoryId(data.getCategory().getId());
-        
     }
     public String getId() { return id;  }
     public ProductEntity setId(String id) {

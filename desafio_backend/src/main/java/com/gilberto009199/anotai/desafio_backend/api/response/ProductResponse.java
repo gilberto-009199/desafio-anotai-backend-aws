@@ -4,14 +4,27 @@ import java.math.BigDecimal;
 
 import com.gilberto009199.anotai.desafio_backend.entities.CategoryEntity;
 import com.gilberto009199.anotai.desafio_backend.entities.ProductEntity;
+import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(description = "Product Data")
 public class ProductResponse {
 
+    @Schema(description = "Product id", requiredMode = Schema.RequiredMode.REQUIRED)
     private String id;
+
+    @Schema(description = "Product Title", requiredMode = Schema.RequiredMode.REQUIRED)
     private String title;
+
+    @Schema(description = "Product Title", requiredMode = Schema.RequiredMode.REQUIRED)
     private String description;
+
+    @Schema(description = "Product Price", requiredMode = Schema.RequiredMode.REQUIRED)
     private BigDecimal price;
+
+    @Schema(description = "Product Category", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     private CategoryResponse category;
+
+    @Schema(description = "Product Owner id", requiredMode = Schema.RequiredMode.REQUIRED)
     private String ownerId;
 
     public ProductResponse() {}
